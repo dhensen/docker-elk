@@ -1,7 +1,8 @@
-version: '3.2'
+version: '2.4'
 
 services:
   elasticsearch:
+    cpus: 0.5
     build:
       context: elasticsearch/
       args:
@@ -26,12 +27,9 @@ services:
     networks:
       - elk
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
 
   logstash:
+    cpus: 0.5
     build:
       context: logstash/
       args:
@@ -57,12 +55,9 @@ services:
     depends_on:
       - elasticsearch
     restart: always
-    deploy:
-      resources:
-        limits:
-          cpus: '0.50'
 
   kibana:
+    cpus: 0.5
     build:
       context: kibana/
       args:
